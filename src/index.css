@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    background-color: #050608;
+    color: #f1f5f9;
+    overflow-x: hidden;
+  }
+
+  /* Custom Spider-Man Red Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #050608;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #e62429;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ff1e27;
+  }
+}
+
+/* Comic Halftone Texture */
+.comic-halftone {
+  background-image: radial-gradient(rgba(230, 36, 41, 0.09) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+}
+
+.comic-dots-white {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+}
+
+/* Comic Panels & Borders */
+.comic-panel {
+  background: rgba(12, 14, 20, 0.88);
+  border: 2px solid #222838;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.comic-panel-red {
+  background: rgba(14, 16, 24, 0.92);
+  border: 2px solid rgba(230, 36, 41, 0.4);
+  box-shadow: 4px 4px 0px 0px rgba(230, 36, 41, 0.35);
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.comic-panel-red:hover {
+  border-color: #e62429;
+  box-shadow: 6px 6px 0px 0px #e62429, 0 0 25px rgba(230, 36, 41, 0.3);
+  transform: translateY(-4px);
+}
+
+/* Spider-Man Action Button */
+.comic-btn-red {
+  background: #e62429;
+  color: #ffffff;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.06em;
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 0px 0px #ffffff;
+  transition: all 0.2s ease-in-out;
+}
+
+.comic-btn-red:hover {
+  background: #ff1e27;
+  box-shadow: 6px 6px 0px 0px #e62429;
+  transform: translate(-2px, -2px);
+}
+
+.comic-btn-black {
+  background: #0d0f17;
+  color: #ffffff;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.06em;
+  border: 2px solid #e62429;
+  box-shadow: 4px 4px 0px 0px #e62429;
+  transition: all 0.2s ease-in-out;
+}
+
+.comic-btn-black:hover {
+  background: #171b26;
+  border-color: #ff1e27;
+  box-shadow: 6px 6px 0px 0px #ff1e27;
+  transform: translate(-2px, -2px);
+}
+
+/* Comic Banner & Ribbons */
+.comic-badge {
+  background: #e62429;
+  color: #ffffff;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.08em;
+  transform: skewX(-6deg);
+  display: inline-block;
+  padding: 2px 10px;
+  border: 1px solid #000000;
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.comic-badge > * {
+  transform: skewX(6deg);
+}
+
+/* Web Graphic SVG Lines Animation */
+@keyframes drawWeb {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.8;
+  }
+}
+
+.animate-web-draw {
+  stroke-dasharray: 1000;
+  animation: drawWeb 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Diagonal Comic Transitions */
+.comic-diagonal-top {
+  clip-path: polygon(0 0, 100% 4vw, 100% 100%, 0 100%);
+}
+
+.comic-diagonal-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%);
+}
+
+.comic-speed-line {
+  background: linear-gradient(90deg, transparent, rgba(230, 36, 41, 0.3), transparent);
+  height: 2px;
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
